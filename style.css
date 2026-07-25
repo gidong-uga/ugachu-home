@@ -26,9 +26,8 @@ body {
 @media (max-width: 600px) {
   .canvas {
     width: 95vw;
-    height: 82vh;
-    max-width: none;
-    aspect-ratio: auto;
+    height: 150vh;
+    aspect-ratio: 4 / 5;
     margin: 5px auto;
   }
   .canvas img,
