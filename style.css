@@ -1,7 +1,7 @@
 /* 1. 바탕 화면 */
 body {
   margin: 0;
-  padding: 20px 0;
+  padding: 0;
   background-color: #dcd8cd;
   display: flex;
   justify-content: center;
@@ -10,7 +10,7 @@ body {
 }
 
 
-/* 2. 메인 스케치북 틀 */
+/* 2. 메인 스케치북 틀 (비율 고정 수정) */
 .canvas {
   position: relative;
   width: 700px;
@@ -22,14 +22,23 @@ body {
   overflow: hidden;
 }
 
-/* 3. 스티커 기본 설정 */
+/* 3. 모바일/작은 화면을 위한 설정*/
+@media (max-width: 768px) {
+  .canvas {
+    width: 90vw;
+    height: 112.5vw;
+    margin: 20px auto;
+  }
+}
+
+/* 4. 스티커 기본 설정 */
 .sticker {
   position: absolute;
   height: auto;
 }
 
 /* ==========================================
-   4. 위치 및 크기 세부 지정
+   5. 위치 및 크기 세부 지정
    ========================================== */
 
 /* home (카메라 - 왼쪽 중간) */
