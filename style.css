@@ -23,11 +23,11 @@ body {
 }
 
 /* 3. 모바일/작은 화면을 위한 설정*/
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .canvas {
-    width: 90vw;
-    height: 112.5vw;
-    margin: 20px auto;
+    width: 95vw;
+    aspect-ratio: 9 / 16;
+    margin: 10px auto;
   }
 }
 
