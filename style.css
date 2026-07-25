@@ -26,11 +26,19 @@ body {
 @media (max-width: 600px) {
   .canvas {
     width: 95vw;
-    height: 150vh;
-    aspect-ratio: 4 / 5;
+    height: 82vh;
+    max-width: none;
+    aspect-ratio: auto;
     margin: 5px auto;
   }
+  .canvas img,
+  .sticker {
+    transform: scale(1.35);
+    transform-origin: center center;
+  }
 }
+
+
 
 /* 4. 스티커 기본 설정 */
 .sticker {
