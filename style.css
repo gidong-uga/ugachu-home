@@ -1,0 +1,98 @@
+/* 1. 바탕 화면 */
+body {
+  margin: 0;
+  padding: 20px 0;
+  background-color: #dcd8cd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+
+/* 2. 메인 스케치북 틀 */
+.canvas {
+  position: relative;
+  width: 700px;
+  height: 875px;
+  background-image: url('images/1.png'); /* 배경(메모지 포함된 통배경) */
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/* 3. 스티커 기본 설정 */
+.sticker {
+  position: absolute;
+  height: auto;
+}
+
+/* ==========================================
+   4. 위치 및 크기 세부 지정
+   ========================================== */
+
+/* home (카메라 - 왼쪽 중간) */
+.home {
+  top: 32%;
+  left: 6%;
+  width: 16%;
+}
+
+/* music (이어폰 - home 아래) */
+.music {
+  top: 50%;
+  left: 20%;
+  width: 18%;
+}
+
+/* clothes (옷 - 왼쪽 아래) */
+.clothes {
+  bottom: 5%;
+  left: 6%;
+  width: 14%;
+}
+
+/* mountinebook (산과 책 - 바닥 중간) */
+.mountinebook {
+  bottom: 6%;
+  left: 30%;
+  width: 30%;
+}
+
+/* cat (고양이 - 오른쪽 팔 위) */
+.cat {
+  top: 26%;
+  right: 19%;
+  width: 14%;
+}
+
+/* misangmul (미생물 - 오른쪽 중간) */
+.misangmul {
+  top: 56%;
+  right: 7%;
+  width: 20%;
+}
+
+/* paint (팔레트 - 오른쪽 아래) */
+.paint {
+  bottom: 5%;
+  right: 6%;
+  width: 28%;
+}
+
+/* 우가츄 상단 타이틀 글씨 (맨 위 중앙)*/
+.title {
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+}
+
+/* 우가츄 중앙 캐릭터 (가운데) */
+.character {
+  top: 20%;
+  left: 60%;
+  transform: translateX(-50%);
+  width: 55%;
+}
