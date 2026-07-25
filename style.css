@@ -27,7 +27,7 @@ body {
   .canvas {
     width: auto;
     max-width: 90vw;
-    height: 60vh;
+    height: 82vh;
     aspect-ratio: 4 / 5;
     margin: 10px auto;
   }
