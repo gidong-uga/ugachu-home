@@ -57,7 +57,7 @@ body {
     transform: translateX(-50%);
   }
 
-  /* 모바일 가독성을 위해 각 스티커들의 크기와 위치 미세 조정 */
+  /* 모바일 가독성 스티커 크기 위치 미세 조정 */
   .home { top: 40%; left: 5%; width: 18%; }
   .music { top: 58%; left: 20%; width: 20%; }
   .clothes { bottom: 3%; left: 5%; width: 16%; }
@@ -79,49 +79,55 @@ body {
    5. 위치 및 크기 세부 지정
    ========================================== */
 
-/* home (카메라 - 왼쪽 중간) */
+/* home*/
 .home {
   top: 32%;
   left: 6%;
   width: 16%;
 }
 
-/* music (이어폰 - home 아래) */
+/* music */
 .music {
   top: 50%;
   left: 20%;
   width: 18%;
 }
 
-/* clothes (옷 - 왼쪽 아래) */
+/* clothes */
 .clothes {
   bottom: 5%;
   left: 6%;
   width: 14%;
 }
 
-/* mountinebook (산과 책 - 바닥 중간) */
+/* mountinebook */
 .mountinebook {
   bottom: 6%;
   left: 30%;
   width: 30%;
 }
 
-/* cat (고양이 - 오른쪽 팔 위) */
+/* cat  */
 .cat {
   top: 26%;
   right: 19%;
   width: 14%;
 }
 
-/* misangmul (미생물 - 오른쪽 중간) */
+/* misangmul  */
 .misangmul {
   top: 56%;
   right: 7%;
   width: 20%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-/* paint (팔레트 - 오른쪽 아래) */
+.misangmul:hover {
+  transform: translateY(-5px) rotate(-3deg);
+}
+
+/* paint */
 .paint {
   bottom: 5%;
   right: 6%;
@@ -134,7 +140,7 @@ body {
   transform: translateY(-5px) rotate(-3deg);
 }
 
-/* 우가츄 상단 타이틀 글씨 (맨 위 중앙)*/
+/* 우가츄 상단 타이틀 글씨*/
 .title {
   top: 4%;
   left: 50%;
@@ -142,7 +148,7 @@ body {
   width: 75%;
 }
 
-/* 우가츄 중앙 캐릭터 (가운데) */
+/* 우가츄 중앙 캐릭터 */
 .character {
   top: 20%;
   left: 60%;
