@@ -100,11 +100,17 @@ body {
   width: 14%;
 }
 
-/* mountinebook */
+/* mountinebook 호버링 완료 */ 
 .mountinebook {
   bottom: 6%;
   left: 30%;
   width: 30%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.mountinebook:hover {
+  transform: translateY(-5px) rotate(-3deg);
 }
 
 /* cat  */
@@ -114,7 +120,7 @@ body {
   width: 14%;
 }
 
-/* misangmul  */
+/* misangmul 호버링 완료 */
 .misangmul {
   top: 56%;
   right: 7%;
@@ -127,7 +133,7 @@ body {
   transform: translateY(-5px) rotate(-3deg);
 }
 
-/* paint */
+/* paint 호버링 완료 */
 .paint {
   bottom: 5%;
   right: 6%;
