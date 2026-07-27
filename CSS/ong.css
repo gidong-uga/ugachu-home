@@ -1,0 +1,80 @@
+/* 기본설정 */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 까옹북 */
+#kkaongbook{
+   position: relative;
+   width: 100%;
+   min-height: 6000px;
+   overflow: hidden;
+}
+
+/* 까옹이 */
+.kkaong{
+    position: absolute;
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: none;
+    cursor: grab;
+    transition:
+        transform .18s ease,
+        filter .18s ease;
+    animation: kkaong 4s ease-in-out infinite;
+    filter: drop-shadow(0px 6px 10px rgba(0,0,0,.18));
+}
+
+/* 마우스 올리면 */
+.kkaong:hover{
+    transform: scale(1.05);
+    filter: drop-shadow(0px 8px 20px rgba(0,0,0,.5));
+}
+
+/* 드래그 */
+.kkaong.kkaong.dragging{
+    cursor: grabbing;
+    animation : none;
+    transform: scale(1.05); translateY(-12px);
+    filter: drop-shadow(0px 20px 22px rgba(0,0,0,.45));
+    z-index: 99999;
+    transition:
+        transform .18s ease,
+        filter .18s ease;
+}
+
+/* 까옹이 애니메이션 */
+@keyframes kkaong {
+    0%{
+        transform: translateY(0px);
+    }
+    
+    25%{
+        transform: translateY(-4px);
+    }
+    
+    50%{
+        transform: translateY(-6px);
+    }
+
+    75%{
+        transform: translateY(4px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+}
