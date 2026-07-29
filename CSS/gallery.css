@@ -17,7 +17,7 @@ h1 {
 
 @media (min-width: 768px) {
     .gallery{
-        column-count: 5;
+        column-count: 4;
         column-gap: 30px;
         padding: 40px;
     }
@@ -26,10 +26,22 @@ h1 {
 .gallery img {
    width: 100%;
    height: auto;
+   display: block;
    margin-bottom: 20px;
    break-inside: avoid;
-   display: block;
+   
+    opacity:0;
+
+    transition:
+        opacity .4s ease,
+        transform .25s ease;
+
+    will-change:transform, opacity;
+
+    content-visibility:auto;
+    contain-intrinsic-size:300px;
 }
+
 
 /* 모달창 전체 배경 */
 .image-modal {
@@ -68,7 +80,7 @@ h1 {
     line-height: 1.6;
     
     /* 반짝이는 애니메이션 적용 (1.5초 주기로 반복) */
-    animation: neonGlow 1.5s infinite alternate;
+    animation: neonGlow 3s infinite alternate;
 }
 
 /* 마우스를 올렸을 때 */
@@ -88,4 +100,9 @@ h1 {
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 255, 229, 0.8), 0 0 30px rgba(255, 87, 34, 0.6);
     }
+}
+
+/* 화면에 나타나 로딩이 완료되면 선명하게 띄움 */
+.gallery img.loaded {
+    opacity: 1;
 }
