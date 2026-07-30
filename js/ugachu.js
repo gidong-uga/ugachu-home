@@ -3,7 +3,7 @@ let current = 0;
 
 const photo = document.getElementById("photo");
 
-// JSON 불러오기
+// JSON 불러오기 (포켓몬 도감용)
 async function loadData() {
     try {
         const response = await fetch("./data/ugachu.json");
@@ -19,7 +19,7 @@ async function loadData() {
 
 // 현재 사진 표시
 function showImage() {
-    photo.src = "./images/na/" + images[current];
+    photo.src = "./images/about me/na/" + images[current];
     photo.alt = images[current];
 }
 
@@ -51,7 +51,6 @@ document.getElementById("left").addEventListener("click", prevImage);
 
 // 키보드 방향키
 document.addEventListener("keydown", function(e){
-
     if(e.key === "ArrowRight"){
         nextImage();
     }
@@ -59,8 +58,33 @@ document.addEventListener("keydown", function(e){
     if(e.key === "ArrowLeft"){
         prevImage();
     }
-
 });
 
 // 시작
 loadData();
+
+
+// --------------------------------------------------
+// 📂 아래 좋아하는 것 도감 (favorite.json 불러오기)
+// --------------------------------------------------
+(() => {
+    const dexGrid = document.getElementById('dex-grid');
+
+    fetch('./data/favorite.json')
+        .then(response => response.json())
+        .then(favImages => {
+            if (!dexGrid) return;
+
+            dexGrid.innerHTML = ''; // 초기화
+
+            favImages.forEach(imgPath => {
+                const itemHtml = `
+                    <div class="dex-item">
+                         <img src="./images/about me/like/${imgPath}" alt="도감 이미지">
+                    </div>
+                `;
+                dexGrid.innerHTML += itemHtml;
+            });
+        })
+        .catch(error => console.error('favorite.json 불러오기 실패:', error));
+})();

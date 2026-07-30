@@ -12,23 +12,123 @@
 
 <h1>...?</h1>
 
-<div id="pokedex">
+<div class="container">
+    <!-- 1열 전체를 감싸는 영역 시작 -->
+<div class="col-1">
 
-    <!-- 도감 배경 -->
-    <img id="dogam" src="./images/na/dogam.webp" alt="도감">
+    <!-- 1. 도감 기계 -->
+    <div id="pokedex">
+        <!-- 도감 배경 -->
+        <img id="dogam" src="./images/about me/na/dogam.webp" alt="도감">
 
-    <!-- 액정에 표시될 사진 -->
-    <img id="photo" src="" alt="">
+        <!-- 액정에 표시될 사진 -->
+        <img id="photo" src="" alt="">
 
-    <!-- 방향키 버튼 -->
-    <button id="up"></button>
-    <button id="left"></button>
-    <button id="right"></button>
-    <button id="down"></button>
+        <!-- 방향키 버튼 -->
+        <button id="up"></button>
+        <button id="left"></button>
+        <button id="right"></button>
+        <button id="down"></button>
+    </div>
+
+    <!-- 2. 도감 윈도우 창 -->
+    <div class="window-box fav-dex">
+        <div class="window-header">
+            <span class="window-title">📂귀여운것들...도감</span>
+            <button class="window-close-btn">✕</button>
+        </div>
+
+        <div class="window-body">
+            <div id="dex-grid" class="dex-grid"></div>
+        </div>
+    </div>
+
+    <a href="index.html"> 우가우가</a>
 
 </div>
 
-<a href="index.html"> 우가우가</a>
+<div class="col-2">
+
+    <!-- 자기소개 창 -->
+    <div class="intro-window">
+
+        <div class="intro-header">
+            <div class="header-lights">
+                <span class="light red"></span>
+                <span class="light yellow"></span>
+                <span class="light green"></span>
+            </div>
+
+            <button class="intro-close">✕</button>
+        </div>
+
+        <div class="intro-body">
+
+            <div class="intro-left">
+                <p>&gt; 안녕하세요</p>
+                <p>&gt; 이름 강기동</p>
+                <p>&gt; 임상병리 전공하는 대학생이고</p>
+                <p>&gt; 그림 그립니다.</p>
+                <p>&gt; 요즘 관심사는 홈페이지 만들기</p>
+            </div>
+
+            <div class="intro-right">
+                <h2>ASCII(랜덤)</h2>
+                <pre id="ascii-art"></pre>
+            </div>
+
+        </div>
+
+        <!-- 🎵 노래 플레이어 -->
+    <div class="window-box music-player">
+
+     <div class="window-header">
+        <span class="window-title">🎵 Now Playing</span>
+        <button class="window-close-btn">✕</button>
+    </div>
+
+    <div class="window-body music-body">
+
+        <!-- 유튜브 영상 -->
+        <iframe
+            class="youtube-player"
+            src="https://www.youtube.com/embed/Ptk_1Dc2iPY"
+            title="Canon in D"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+
+        <!-- 노래 정보 -->
+        <div class="music-info">
+            <p class="playing">요즘 무슨 노래에 빠졌냐면...</p>
+            <h3>Canon in D</h3>
+            <p class="artist">Brooklyn Duo</p>
+            <p class="music-story">
+                2026.07<br>
+
+                요즘 홈페이지 만들면서 제일 많이 듣는 노래<br><br>
+                
+                그냥 마음이 차분해짐 츄....<br><br>
+
+                좀 환기시키고 싶을때 팝송듣거나 제이팝 듣거나
+                아 한자공부해야하는데 미치겟츄<br><br>
+                
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+    </div>
+
+</div>
+
+</div>
+
 
 <script src="./js/ugachu.js"></script>
 
