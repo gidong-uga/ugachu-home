@@ -9,7 +9,7 @@ async function LoadCats() {
         img.src = `./images/cats/${cat}`;
         img.classList.add("kkaong");
         stickerBook.appendChild(img);
-        const size = Math.floor(Math.random() * 180) + 180;
+        const size = Math.floor(Math.random() * 21) + 160;
         img.style.width = `${size}px`;
         
         const duration = (3 + Math.random() * 3).toFixed(2);
@@ -29,7 +29,7 @@ async function LoadCats() {
         img.style.left = `${x}px`;
         img.style.top = `${y}px`;
 
-        placedSticker.push({ x, y, width: size * 0.7, height: size * 0.7 });
+        placedSticker.push({ x, y, width: size+30, height: size+30});
 
         stickerBook.appendChild(img);
 

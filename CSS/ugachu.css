@@ -1,78 +1,79 @@
-body{
-    margin:0;
-    background:#ddd;
-    font-family:sans-serif;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+body {
+    margin: 0;
+    background: #ddd;
+    font-family: sans-serif;
+    padding: 20px 40px; /* 화면 전체 바깥 여백 */
+    
+    /* align-items: center; <- 제거하여 왼쪽 정렬이 되도록 함 */
 }
 
-h1{
-    margin:30px 0;
+h1 {
+    margin: 10px 0 20px 0;
+    font-size: 32px;
 }
 
-#pokedex{
-    position:relative;
-    width:750px;
+/* 도감 기계 전체 (크기 축소 및 왼쪽 배치) */
+#pokedex {
+    position: relative;
+    width: 280px;
 }
 
-#dogam{
-    width:100%;
-    display:block;
+#dogam {
+    width: 100%;
+    display: block;
 }
 
 /* 액정에 들어갈 사진 */
-#photo{
-    position:absolute;
+#photo {
+    position: absolute;
 
-    left:108px;
-    top:225px;
+    left: 89px;
+    top: 173.7px;
 
-    width:179px;
-    height:190px;
+    width: 95px;
+    height: 93px;
 
-    object-fit:cover;
-
-    border-radius: 6px;
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+    object-fit: cover;
+    border-radius: 7px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 }
 
 /* 버튼 공통 */
-#pokedex button{
-    position:absolute;
-    width:30px;
-    height:30px;
+#pokedex button {
+    position: absolute;
+    width: 15px;   /* 기존 30px -> 절반 */
+    height: 15px;  /* 기존 30px -> 절반 */
 
-    background:transparent;
-    border:none;
-    cursor:pointer;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-/* 위 */
-#up{
-    left:165px;
-    top:322px;
+/* 위 버튼 */
+#up {
+    left: 84px;
+    top: 163px;
 }
 
-/* 아래 */
-#down{
-    left:165px;
-    top:415px;
+/* 아래 버튼 */
+#down {
+    left: 84px;
+    top: 210px;
 }
 
-/* 왼쪽 */
-#left{
-    left:230px;
-    top:470px;
+/* 왼쪽 버튼 */
+#left {
+    left: 160px;
+    top: 328px;
 }
 
-/* 오른쪽 */
-#right{
-    left:275px;
-    top:470px;
+/* 오른쪽 버튼 */
+#right {
+    left: 193.5px;
+    top: 329.5px;
 }
 
-a{
-    margin-top:20px;
+a {
+    display: inline-block;
+    margin-top: 20px;
 }

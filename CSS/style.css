@@ -86,6 +86,10 @@ body {
   width: 16%;
 }
 
+.home:hover {
+  transform: translateY(-5px) rotate(-3deg);
+}
+
 /* music */
 .music {
   top: 50%;
@@ -93,11 +97,19 @@ body {
   width: 18%;
 }
 
+.music:hover {
+  transform: translateY(-5px) rotate(-3deg);
+}
+
 /* clothes */
 .clothes {
   bottom: 5%;
   left: 6%;
   width: 14%;
+}
+
+.clothes:hover {
+  transform: translateY(-5px) rotate(-3deg);
 }
 
 /* mountinebook 호버링 완료 */ 
@@ -118,6 +130,10 @@ body {
   top: 26%;
   right: 19%;
   width: 14%;
+}
+
+.cat:hover {
+  transform: translateY(-5px) rotate(-3deg);
 }
 
 /* misangmul 호버링 완료 */
