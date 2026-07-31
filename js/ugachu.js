@@ -64,9 +64,8 @@ document.addEventListener("keydown", function(e){
 loadData();
 
 
-// --------------------------------------------------
-// 📂 아래 좋아하는 것 도감 (favorite.json 불러오기)
-// --------------------------------------------------
+// 좋아하는 것 도감 (favorite.json)
+
 (() => {
     const dexGrid = document.getElementById('dex-grid');
 
@@ -89,8 +88,44 @@ loadData();
         .catch(error => console.error('favorite.json 불러오기 실패:', error));
 })();
 
+document.addEventListener("DOMContentLoaded", () => {
+    // 아스키 아트 목록 (나중에 반점이랑 백틱 넣어서 추가 가능!)
+    const asciiList = [
+    // 1번 아스키 아트
+    `   __                            
+  / /  ___ ____  ___ ____ ___ __
+ / _ \\/ _ \`/ _ \\/ _ \`/ _ \`/ // /
+/_.__/\\_,_/_//_/\\_, /\\_, /\\_,_/ 
+               /___//___/       `,
+
+    // 2번 아스키 아트
+    `     __   __               
+ ___/ /__/ /__  ___  ___ _
+/ _  / _  / _ \\/ _ \\/ _ \`/
+\\_,_/\\_,_/\\___/_//_/\\_, / 
+                   /___/  `,
+
+    // 3번 아스키 아트
+    `  __  __          __  __          
+ / / / /__ ____ _/ / / /__ ____ _ 
+/ /_/ / _ \`/ _ \`/ /_/ / _ \`/ _ \`/ 
+\\____/\\_, /\\_,_/\\____/\\_, /\\_,_/  
+     /___/           /___/        `
+];
+
+    // 랜덤으로 선택해서 화면에 출력
+    const randomIndex = Math.floor(Math.random() * asciiList.length);
+    const asciiElement = document.getElementById("ascii-art");
+    
+    if (asciiElement) {
+        asciiElement.textContent = asciiList[randomIndex];
+    }
+});
+
+// 1. 달력
+
 const calendarId = "gidongj590@gmail.com";
-const apiKey = "AIzaSyCAi1x56WDS5SdAGpD3NUHowr2tDtd9CHs";
+const apiKey = "AIzaSyATv4Lolc67J_QhJGr9Bv5xpClNnpXb9QQ";
 
 const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?key=${apiKey}`;
 
@@ -115,7 +150,7 @@ let currentDate = new Date(2026, 6, 1); // 2026년 7월 (월은 0부터 시작�
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     renderCalendar(currentDate); // 1. 달력 틀부터 먼저 그리기
-    fetchGoogleEvents();        // 2. 구글 일정 가져와서 ⭐ 표시하기
+    fetchGoogleEvents();        // 2. 구글 일정 가져오기
 });
 
 // ==========================================
@@ -177,10 +212,21 @@ function renderCalendar(date) {
 }
 
 // ==========================================
-// 4. 구글 캘린더 API 일정 불러와서 ⭐ 찍기
+// 4. 구글 캘린더 API 일정 불러와서 표시하기
 // ==========================================
 function fetchGoogleEvents() {
-    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?key=${apiKey}`;
+    // 1. 달 변경 시 이전 일정 텍스트 지우기 (중복 방지)
+    document.querySelectorAll('.event-title').forEach(el => el.remove());
+
+    // 2. 현재 보고 있는 달의 시작일과 마지막 날 ISO 계산
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    const timeMin = new Date(year, month, 1, 0, 0, 0).toISOString();
+    const timeMax = new Date(year, month + 1, 0, 23, 59, 59).toISOString();
+
+    // 3. 해당 월의 모든 일정을 요청하는 URL 구성
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?key=${apiKey}&timeMin=${timeMin}&timeMax=${timeMax}&singleEvents=true&maxResults=2500&orderBy=startTime`;
 
     fetch(url)
         .then(res => {
@@ -190,17 +236,53 @@ function fetchGoogleEvents() {
         .then(data => {
             if (!data.items) return;
 
-            // 일정 날짜 추출하여 해당 td에 .event 클래스 추가
             data.items.forEach(event => {
                 const eventStart = event.start.date || event.start.dateTime;
                 if (eventStart) {
                     const dateStr = eventStart.split('T')[0]; // YYYY-MM-DD 형태
                     const targetCell = document.querySelector(`td[data-date="${dateStr}"]`);
+
                     if (targetCell) {
-                        targetCell.classList.add('event'); // CSS에서 ⭐ 찍히도록 설정되어 있음
+                        // 일정 제목 추출 (없을 경우 기본값)
+                        const eventTitle = event.summary || '일정';
+
+                        // 일정 텍스트 요소를 담을 div 생성
+                        const eventDiv = document.createElement('div');
+                        eventDiv.classList.add('event-title');
+                        eventDiv.innerText = eventTitle;
+
+                        // 해당 날짜 셀에 일정 추가
+                        targetCell.appendChild(eventDiv);
+                        targetCell.classList.add('has-event');
                     }
                 }
             });
         })
-        .catch(err => console.warn('일정을 불러올 수 없습니다 (캘린더 공개 설정을 확인하세요):', err.message));
+        .catch(err => console.warn('일정을 불러올 수 없습니다:', err.message));
+}
+
+// 달력 이동 이벤트 연결 (DOMContentLoaded 안이나 코드 하단에 추가)
+const prevBtn = document.getElementById("prev-month"); // 이전달 버튼 ID에 맞춰 수정
+const nextBtn = document.getElementById("next-month"); // 다음달 버튼 ID에 맞춰 수정
+
+if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+        // currentDate의 월을 1개월 추가
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        // 변경된 날짜로 달력 재렌더링
+        renderCalendar(currentDate);
+        // 변경된 달의 일정 다시 불러오기
+        fetchGoogleEvents();
+    });
+}
+
+if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+        // currentDate의 월을 1개월 차감
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        // 변경된 날짜로 달력 재렌더링
+        renderCalendar(currentDate);
+        // 변경된 달의 일정 다시 불러오기
+        fetchGoogleEvents();
+    });
 }

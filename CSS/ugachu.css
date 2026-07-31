@@ -7,7 +7,31 @@ body {
 
 h1 {
     margin: 10px 0 20px 0;
-    font-size: 32px;
+    font-size: 45px;
+    width: 250px;
+    position: relative;
+    left: 30px;
+    display: inline-block;
+    color: #333;
+    z-index: 1;
+    text-align: center;
+}
+
+/* glitter GIF */
+h1::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 140%;
+    background-image: url('../images/about me/glitter.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* 도감 기계 전체 */
@@ -129,7 +153,7 @@ a {
     padding: 12px;
 }
 
-/* 📜 스크롤 설정 */
+/* 스크롤 설정 */
 .window-body {
     padding: 12px;
     max-height: 300px;
@@ -151,7 +175,7 @@ a {
     border-bottom-color: #000;
 }
 
-/* 🎮 3열 도감 그리드 */
+/* 3열 도감 그리드 */
 .dex-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -238,13 +262,14 @@ a {
 .intro-body{
     display:flex;
     justify-content:space-between;
-    padding:12px 18px;
+    padding:8px 14px;
     height: calc(100% - 34px);
     overflow-y: auto;
 }
 
 .intro-left{
-    font-size:16px;
+    flex-shrink: 0;
+    font-size:15px;
     line-height:1.5;
 }
 
@@ -252,20 +277,43 @@ a {
     margin:0;
 }
 
-.intro-right{
-    width:180px;
-    text-align:center;
-}
-
-.intro-right h2{
-    margin-top:30px;
-    font-size:26px;
-    white-space: nowrap;
+.intro-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 #ascii-art{
-    margin-top:20px;
-    font-family:monospace;
+    margin-top: 15px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.1;
+    white-space: pre;
+    text-align: center;
+    transform: translateY(-20px);
+
+    background: linear-gradient(180deg, #ff007f, #7928ca, #00dfd8, #ffd60a, #ff007f);
+    background-size: 100% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* 4초 동안 infinite 왕복 이동 */
+    animation: gradientMoveVertical 4s ease infinite;
+}
+    /* ===== Y축 이동 키프레임 ===== */
+    @keyframes gradientMoveVertical {
+    0% {
+        background-position: 50% 0%;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 50% 0%;
+    }
 }
 
 /* ===== 노래 플레이어 ===== */
@@ -321,15 +369,30 @@ a {
     align-items:center;
 }
 
+/* ===== 하이퍼링크 ===== */
+
+.hyperlink{
+    width: 400px;
+}
+
+.hyperlink-body{
+    height:260px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+}
+
 .col-3{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-/* ========================= */
-/* 📅 Calendar */
-/* ========================= */
+/* Calendar */
 
 .calendar-window{
     width:550px;
@@ -423,4 +486,27 @@ a {
 .calendar .other-month{
     color:#b8b8b8;
     background:#efefef;
+}
+
+/* 달력 칸(td) 세로 정렬 및 최소 높이 설정 */
+#calendar-body td {
+    vertical-align: top;  /* 날짜 숫자와 일정을 위쪽으로 정렬 */
+    height: 70px;         /* 일정이 여러 개 들어갈 수 있게 칸 높이 확보 */
+    padding: 4px;
+}
+
+/* 일정 박스 스타일 */
+.event-title {
+    background-color: #e3f2fd; /* 소프트한 파란색 배경 */
+    color: #1976d2;            /* 글자색 */
+    font-size: 11px;
+    padding: 2px 4px;
+    margin-top: 3px;
+    border-radius: 3px;
+    
+    /* 글자 길면 ... */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
 }
