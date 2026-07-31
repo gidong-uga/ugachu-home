@@ -78,7 +78,7 @@ a {
 
 .container{
     display: grid;
-    grid-template-columns: 320px 600px 250px;
+    grid-template-columns: 320px 500px 350px;
     gap: 40px;
     align-items: start;
 }
@@ -272,7 +272,6 @@ a {
 
 .music-player{
     width:300px;
-
 }
 
 .music-body{
@@ -284,7 +283,6 @@ a {
     align-items:center;
     gap:12px;
     padding:12px;
-
 }
 
 .youtube-player{
@@ -304,20 +302,17 @@ a {
     color:#666;
     font-size:13px;
     margin:0;
-
 }
 
 .music-info h3{
     color:#000000;
     margin:6px 0 2px;
     font-size:22px;
-
 }
 
 .music-info p{
     margin:0;
     font-size:15px;
-
 }
 
 .music-content{
@@ -329,5 +324,103 @@ a {
 .col-3{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+}
+
+/* ========================= */
+/* 📅 Calendar */
+/* ========================= */
+
+.calendar-window{
+    width:550px;
+}
+
+.calendar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.calendar-header h3{
+    margin:0;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.calendar-header button{
+    width:26px;
+    height:24px;
+    border:2px solid #fff;
+    border-right-color:#555;
+    border-bottom-color:#555;
+    background:#dcdcdc;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.calendar-header button:active{
+    border:2px solid #555;
+    border-right-color:#fff;
+    border-bottom-color:#fff;
+}
+
+/* 달력 */
+
+.calendar{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+}
+
+.calendar th{
+    padding:6px 0;
+    font-size:13px;
+    background:#cfcfcf;
+    border:1px solid #999;
+}
+
+.calendar td{
+    height:34px;
+    text-align:center;
+    vertical-align:middle;
+    border:1px solid #b5b5b5;
+    background:white;
+    cursor:pointer;
+    transition:.15s;
+    font-size:14px;
+}
+
+.calendar td:hover{
+    background:#d8ecff;
+}
+
+/* 오늘 */
+
+.calendar .today{
+    background:#1f6fff;
+    color:white;
+    font-weight:bold;
+}
+
+/* 일정있는 날 */
+
+.calendar .event{
+    position:relative;
+    font-weight:bold;
+}
+
+.calendar .event::after{
+    content:"⭐";
+    position:absolute;
+    right:2px;
+    bottom:1px;
+    font-size:10px;
+}
+
+/* 다른 달 */
+
+.calendar .other-month{
+    color:#b8b8b8;
+    background:#efefef;
 }
